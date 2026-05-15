@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bwmb32vhccube"]
 
 [ext_resource type="Script" uid="uid://ct7xx7n1w1t4h" path="res://main.gd" id="1_a202f"]
+[ext_resource type="PackedScene" uid="uid://3d8yg6g3fvoe" path="res://assets/models/hand.gltf" id="2_noarx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_noarx"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -17,13 +18,28 @@ script = ExtResource("1_a202f")
 tracker = &"left_hand"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftController" unique_id=1049886298]
+visible = false
 mesh = SubResource("BoxMesh_noarx")
+
+[node name="HandLeftRoot" type="Node3D" parent="XROrigin3D/LeftController" unique_id=725653518]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, -0.07, 0, 0, 0)
+
+[node name="Sketchfab_Scene" parent="XROrigin3D/LeftController/HandLeftRoot" unique_id=1227801757 instance=ExtResource("2_noarx")]
+transform = Transform3D(0.099999994, -2.910383e-11, 0, 2.910383e-11, 0.099999994, 0, 0, 3.469447e-18, 0.099999994, -0.9904735, 0.14903335, 8.658994e-08)
 
 [node name="RightController" type="XRController3D" parent="XROrigin3D" unique_id=1705045605]
 tracker = &"right_hand"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightController" unique_id=1056390128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27551207, 0.09638863, 0.07681829)
+visible = false
 mesh = SubResource("BoxMesh_noarx")
+
+[node name="HandRightRoot" type="Node3D" parent="XROrigin3D/RightController" unique_id=148346691]
+transform = Transform3D(-0.07, -1.1641532e-10, -1.0569706e-08, -1.1641532e-10, 0.07, -1.017735e-17, 1.0569706e-08, 7.400875e-18, -0.07, 0.041793305, 0.0072607854, -0.00783623)
+
+[node name="Sketchfab_Scene" parent="XROrigin3D/RightController/HandRightRoot" unique_id=2144924111 instance=ExtResource("2_noarx")]
+transform = Transform3D(0.09999995, 8.731149e-11, 0, -8.731149e-11, 0.09999995, 1.8586318e-18, 8.881784e-16, 2.7753283e-18, 0.099999994, -0.52450174, 0.30332226, 0.10856416)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=111991790]
 
