@@ -6,6 +6,39 @@
 [sub_resource type="BoxMesh" id="BoxMesh_noarx"]
 size = Vector3(0.1, 0.1, 0.1)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_noarx"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a0tk4"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r3fl7"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_noarx"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a0tk4"]
+radius = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_noarx"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_a0tk4"]
+radius = 0.1
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_noarx"]
+
+[sub_resource type="Sky" id="Sky_a0tk4"]
+sky_material = SubResource("ProceduralSkyMaterial_noarx")
+
+[sub_resource type="Environment" id="Environment_noarx"]
+background_mode = 2
+sky = SubResource("Sky_a0tk4")
+ambient_light_color = Color(1, 0.34827203, 0.61415195, 0.8627451)
+
 [node name="Node3D" type="Node3D" unique_id=34387740]
 transform = Transform3D(0.9999931, 0.0037175426, 0, -0.0037175426, 0.9999931, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_a202f")
@@ -47,3 +80,47 @@ transform = Transform3D(0.09999995, 8.731149e-11, 0, -8.731149e-11, 0.09999995, 
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Enter VR"
+
+[node name="Level" type="Node3D" parent="." unique_id=1776423624]
+
+[node name="Ground" type="MeshInstance3D" parent="Level" unique_id=1636417183]
+mesh = SubResource("PlaneMesh_noarx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Ground" unique_id=1059045982]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Ground/StaticBody3D" unique_id=2084538163]
+shape = SubResource("BoxShape3D_a0tk4")
+
+[node name="Box" type="MeshInstance3D" parent="Level" unique_id=853391174]
+transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, 0.79664415, 0.06880842, 0)
+mesh = SubResource("BoxMesh_r3fl7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Box" unique_id=311731698]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Box/StaticBody3D" unique_id=1172786185]
+shape = SubResource("BoxShape3D_a0tk4")
+
+[node name="TheOrb" type="MeshInstance3D" parent="Level" unique_id=1210746274]
+transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, -4.2569094, 0.47112995, -0.097133875)
+mesh = SubResource("SphereMesh_noarx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/TheOrb" unique_id=72107335]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/TheOrb/StaticBody3D" unique_id=970579094]
+shape = SubResource("SphereShape3D_a0tk4")
+
+[node name="Column" type="MeshInstance3D" parent="Level" unique_id=1893854236]
+transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, -0.18626823, 0.8897662, 1.8355012)
+mesh = SubResource("CylinderMesh_noarx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Column" unique_id=983005084]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Column/StaticBody3D" unique_id=826950349]
+shape = SubResource("CylinderShape3D_a0tk4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level" unique_id=666713342]
+transform = Transform3D(-0.99766535, -0.007143016, 0.06791778, 0.019412963, 0.9238248, 0.38232318, -0.06547506, 0.38274902, -0.9215293, -0.36494738, 3.250651, -7.48005)
+directional_shadow_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Level" unique_id=1733999333]
+environment = SubResource("Environment_noarx")
