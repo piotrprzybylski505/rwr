@@ -2,27 +2,45 @@
 
 [ext_resource type="Script" uid="uid://ct7xx7n1w1t4h" path="res://main.gd" id="1_a202f"]
 [ext_resource type="PackedScene" uid="uid://3d8yg6g3fvoe" path="res://assets/models/hand.gltf" id="2_noarx"]
+[ext_resource type="Texture2D" uid="uid://bdf2ku250dpcw" path="res://assets/models/textures/skin_baseColor.jpeg" id="3_a0tk4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_noarx"]
 size = Vector3(0.1, 0.1, 0.1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
+albedo_color = Color(0.29392004, 0.44672555, 0.13469085, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_noarx"]
+material = SubResource("StandardMaterial3D_noarx")
 size = Vector2(20, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a0tk4"]
 size = Vector3(0.2, 0.2, 0.2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
+albedo_color = Color(0.3390949, 0.3390949, 0.3390949, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_r3fl7"]
+material = SubResource("StandardMaterial3D_a0tk4")
 size = Vector3(0.2, 0.2, 0.2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
+albedo_color = Color(0.97807926, 0.6648546, 0.63736206, 1)
+albedo_texture = ExtResource("3_a0tk4")
+
 [sub_resource type="SphereMesh" id="SphereMesh_noarx"]
+material = SubResource("StandardMaterial3D_r3fl7")
 radius = 2.0
 height = 4.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a0tk4"]
 radius = 2.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
+albedo_color = Color(0.5068194, 0.50678027, 5.7756904e-07, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_noarx"]
+material = SubResource("StandardMaterial3D_jka67")
 top_radius = 0.1
 bottom_radius = 0.1
 
@@ -57,7 +75,7 @@ mesh = SubResource("BoxMesh_noarx")
 [node name="HandLeftRoot" type="Node3D" parent="XROrigin3D/LeftController" unique_id=725653518]
 transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, -0.07, 0, 0, 0)
 
-[node name="Sketchfab_Scene" parent="XROrigin3D/LeftController/HandLeftRoot" unique_id=1227801757 instance=ExtResource("2_noarx")]
+[node name="Sketchfab_Scene" parent="XROrigin3D/LeftController/HandLeftRoot" unique_id=795177327 instance=ExtResource("2_noarx")]
 transform = Transform3D(0.099999994, -2.910383e-11, 0, 2.910383e-11, 0.099999994, 0, 0, 3.469447e-18, 0.099999994, -0.9904735, 0.14903335, 8.658994e-08)
 
 [node name="RightController" type="XRController3D" parent="XROrigin3D" unique_id=1705045605]
@@ -71,7 +89,7 @@ mesh = SubResource("BoxMesh_noarx")
 [node name="HandRightRoot" type="Node3D" parent="XROrigin3D/RightController" unique_id=148346691]
 transform = Transform3D(-0.07, -1.1641532e-10, -1.0569706e-08, -1.1641532e-10, 0.07, -1.017735e-17, 1.0569706e-08, 7.400875e-18, -0.07, 0.041793305, 0.0072607854, -0.00783623)
 
-[node name="Sketchfab_Scene" parent="XROrigin3D/RightController/HandRightRoot" unique_id=2144924111 instance=ExtResource("2_noarx")]
+[node name="Sketchfab_Scene" parent="XROrigin3D/RightController/HandRightRoot" unique_id=537368251 instance=ExtResource("2_noarx")]
 transform = Transform3D(0.09999995, 8.731149e-11, 0, -8.731149e-11, 0.09999995, 1.8586318e-18, 8.881784e-16, 2.7753283e-18, 0.099999994, -0.52450174, 0.30332226, 0.10856416)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=111991790]
@@ -92,7 +110,7 @@ mesh = SubResource("PlaneMesh_noarx")
 shape = SubResource("BoxShape3D_a0tk4")
 
 [node name="Box" type="MeshInstance3D" parent="Level" unique_id=853391174]
-transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, 0.79664415, 0.06880842, 0)
+transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, 1.2999573, 0.070679516, 0)
 mesh = SubResource("BoxMesh_r3fl7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/Box" unique_id=311731698]
@@ -101,7 +119,7 @@ mesh = SubResource("BoxMesh_r3fl7")
 shape = SubResource("BoxShape3D_a0tk4")
 
 [node name="TheOrb" type="MeshInstance3D" parent="Level" unique_id=1210746274]
-transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, -4.2569094, 0.47112995, -0.097133875)
+transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, -4.257346, 0.5886853, -0.097133875)
 mesh = SubResource("SphereMesh_noarx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/TheOrb" unique_id=72107335]
