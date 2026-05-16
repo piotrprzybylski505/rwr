@@ -51,13 +51,16 @@ material = SubResource("StandardMaterial3D_noarx")
 size = Vector2(20, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a0tk4"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(20, 0.1, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
 albedo_color = Color(0.3390949, 0.3390949, 0.3390949, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_r3fl7"]
 material = SubResource("StandardMaterial3D_a0tk4")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r3fl7"]
 size = Vector3(0.2, 0.2, 0.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
@@ -153,7 +156,7 @@ mesh = SubResource("BoxMesh_r3fl7")
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/Box" unique_id=311731698]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Box/StaticBody3D" unique_id=1172786185]
-shape = SubResource("BoxShape3D_a0tk4")
+shape = SubResource("BoxShape3D_r3fl7")
 
 [node name="TheOrb" type="MeshInstance3D" parent="Level" unique_id=1210746274]
 transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, -4.257346, 0.5886853, -0.097133875)
