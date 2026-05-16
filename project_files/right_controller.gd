@@ -30,6 +30,8 @@ func teleport_now() -> void:
 	xr_origin.global_transform = origin_tf
 
 
-func _on_button_pressed(name: String) -> void:
-	if name == "trigger_click":
+func _on_button_pressed(button_name: String) -> void:
+	print("Wciśnięto przycisk: ", button_name) # Dodaj to
+	if button_name == "trigger_click":
+		print("RayCast uderza w: ", ray.is_colliding()) # Dodaj to
 		teleport_now()
