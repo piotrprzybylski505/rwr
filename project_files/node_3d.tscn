@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ct7xx7n1w1t4h" path="res://main.gd" id="1_a202f"]
 [ext_resource type="Texture2D" uid="uid://bdf2ku250dpcw" path="res://assets/models/textures/skin_baseColor.jpeg" id="3_a0tk4"]
 [ext_resource type="Texture2D" uid="uid://duwwjt77bf41u" path="res://assets/models/textures/skin_normal.png" id="3_r3fl7"]
+[ext_resource type="Script" uid="uid://depv1w5dwqx48" path="res://right_controller.gd" id="4_r3fl7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_texture = ExtResource("3_a0tk4")
@@ -36,6 +37,11 @@ blend_shape_mode = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc5p8"]
 albedo_texture = ExtResource("3_a0tk4")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a0tk4"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
 albedo_color = Color(0.29392004, 0.44672555, 0.13469085, 1)
@@ -107,6 +113,7 @@ mesh = SubResource("ArrayMesh_lhivq")
 
 [node name="RightController" type="XRController3D" parent="XROrigin3D" unique_id=1705045605]
 tracker = &"right_hand"
+script = ExtResource("4_r3fl7")
 
 [node name="HandRightRoot" type="Node3D" parent="XROrigin3D/RightController" unique_id=148346691]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
@@ -114,6 +121,13 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0
 [node name="Object_27" type="MeshInstance3D" parent="XROrigin3D/RightController/HandRightRoot" unique_id=1214919163]
 material_override = SubResource("StandardMaterial3D_wc5p8")
 mesh = SubResource("ArrayMesh_lhivq")
+
+[node name="TeleportRay" type="RayCast3D" parent="XROrigin3D/RightController" unique_id=657696676]
+target_position = Vector3(0, 0, -10)
+
+[node name="TeleportMarker" type="MeshInstance3D" parent="XROrigin3D/RightController" unique_id=381819274]
+visible = false
+mesh = SubResource("CylinderMesh_a0tk4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=111991790]
 
@@ -165,3 +179,5 @@ directional_shadow_mode = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Level" unique_id=1733999333]
 environment = SubResource("Environment_noarx")
+
+[connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D/RightController" method="_on_button_pressed"]
