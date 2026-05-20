@@ -15,6 +15,10 @@ run/main_scene="uid://bwmb32vhccube"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+XrSimulator="uid://ctltchlf2j2r4"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
