@@ -28,7 +28,6 @@ func _physics_process(delta: float) -> void:
 	var input_v: Vector2 = right_ctrl.get_vector2("thumbstick")
 	if abs(input_v.x) < deadzone:
 		can_turn = true
-	
 	elif can_turn:
 		if input_v.x > 0.5: #prawo
 			rotate_y(deg_to_rad(-turn_angle))
