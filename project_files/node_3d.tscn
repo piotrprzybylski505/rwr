@@ -39,9 +39,13 @@ blend_shape_mode = 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc5p8"]
 albedo_texture = ExtResource("3_a0tk4")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4arys"]
+albedo_color = Color(0, 0.8415207, 0.8451726, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_a0tk4"]
-top_radius = 0.01
-bottom_radius = 0.01
+material = SubResource("StandardMaterial3D_4arys")
+top_radius = 0.03
+bottom_radius = 0.03
 height = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
