@@ -83,8 +83,10 @@ albedo_color = Color(0.5068194, 0.50678027, 5.7756904e-07, 1)
 material = SubResource("StandardMaterial3D_jka67")
 top_radius = 0.1
 bottom_radius = 0.1
+height = 3.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a0tk4"]
+height = 3.0
 radius = 0.1
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_noarx"]
@@ -96,6 +98,26 @@ sky_material = SubResource("ProceduralSkyMaterial_noarx")
 background_mode = 2
 sky = SubResource("Sky_a0tk4")
 ambient_light_color = Color(1, 0.34827203, 0.61415195, 0.8627451)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsk3o"]
+albedo_color = Color(0, 0.75917405, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_4arys"]
+material = SubResource("StandardMaterial3D_jsk3o")
+size = Vector3(2, 1.5, 0.001)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6iypd"]
+albedo_color = Color(0.41150585, 0.00011902735, 0.41245508, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tereu"]
+material = SubResource("StandardMaterial3D_6iypd")
+top_radius = 1.5
+bottom_radius = 0.0
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cdqbm"]
+height = 1.0
+radius = 1.5
 
 [node name="Node3D" type="Node3D" unique_id=34387740]
 transform = Transform3D(0.9999931, 0.0037175426, 0, -0.0037175426, 0.9999931, 0, 0, 0, 1, 0, 0, 0)
@@ -152,7 +174,7 @@ mesh = SubResource("PlaneMesh_noarx")
 shape = SubResource("BoxShape3D_a0tk4")
 
 [node name="Box" type="MeshInstance3D" parent="Level" unique_id=853391174]
-transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, 1.2999573, 0.070679516, 0)
+transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, 2.8806207, 0.0765558, 0.2994911)
 mesh = SubResource("BoxMesh_r3fl7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/Box" unique_id=311731698]
@@ -161,7 +183,7 @@ mesh = SubResource("BoxMesh_r3fl7")
 shape = SubResource("BoxShape3D_r3fl7")
 
 [node name="TheOrb" type="MeshInstance3D" parent="Level" unique_id=1210746274]
-transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, -4.257346, 0.5886853, -0.097133875)
+transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, -6.337726, 0.58095133, -1.0440868)
 mesh = SubResource("SphereMesh_noarx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/TheOrb" unique_id=72107335]
@@ -170,7 +192,7 @@ mesh = SubResource("SphereMesh_noarx")
 shape = SubResource("SphereShape3D_a0tk4")
 
 [node name="Column" type="MeshInstance3D" parent="Level" unique_id=1893854236]
-transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, -0.18626823, 0.8897662, 1.8355012)
+transform = Transform3D(0.9233454, -0.00028496888, -0.38397038, -0.00028496888, 0.9999989, -0.0014274361, 0.38397038, 0.0014274361, 0.9233443, 1.8557082, 1.3999728, 5.088729)
 mesh = SubResource("CylinderMesh_noarx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/Column" unique_id=983005084]
@@ -184,5 +206,18 @@ directional_shadow_mode = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Level" unique_id=1733999333]
 environment = SubResource("Environment_noarx")
+
+[node name="Triangle" type="MeshInstance3D" parent="Level" unique_id=942736495]
+transform = Transform3D(0.6467898, 0, -0.7626684, 0, 1, 0, 0.7626684, 0, 0.6467898, 3.6008325, 0.7230321, -4.9470253)
+mesh = SubResource("PrismMesh_4arys")
+
+[node name="Cone" type="MeshInstance3D" parent="Level" unique_id=1235236949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.458828, 3.0243955, 2.6707819)
+mesh = SubResource("CylinderMesh_tereu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Cone" unique_id=976008142]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Cone/StaticBody3D" unique_id=734439776]
+shape = SubResource("CylinderShape3D_cdqbm")
 
 [connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D/RightController" method="_on_button_pressed"]
