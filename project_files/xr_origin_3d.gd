@@ -10,25 +10,24 @@ extends XROrigin3D
 var can_turn: bool = true # Flaga blokady ciaglego obrotu
 
 func _physics_process(delta: float) -> void:
-	var dir := Vector3.ZERO; dir = dir.normalized()
+	var dir := Vector3.ZERO;
 
 	var fwd := -xr_camera.global_transform.basis.z; fwd.y = 0.0; fwd = fwd.normalized()
 	var right := xr_camera.global_transform.basis.x; right.y = 0.0; right = right.normalized()
 
-	var v: Vector2 = left_ctrl.get_vector2("primary")
+	var v: Vector2 = left_ctrl.get_vector2("thumbstick")
 	if v.length() < deadzone:
 		v = Vector2.ZERO
 
-	dir += fwd * (-v.y) + right * (v.x)
+	dir += fwd * (v.y) + right * (v.x)
 
 	if dir.length() > 0.0:
 		global_translate(dir.normalized() * move_speed * delta)
 	
 	#Obracanie prawym joystickiem
-	var input_v: Vector2 = right_ctrl.get_vector2("primary")
+	var input_v: Vector2 = right_ctrl.get_vector2("thumbstick")
 	if abs(input_v.x) < deadzone:
 		can_turn = true
-	
 	elif can_turn:
 		if input_v.x > 0.5: #prawo
 			rotate_y(deg_to_rad(-turn_angle))
