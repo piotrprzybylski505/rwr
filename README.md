@@ -10,7 +10,7 @@ Gra jest hostowana na GitHub Pages i nie wymaga instalacji.
 Aby zagrać:
 1. Uruchom przeglądarkę w swoich goglach VR (np. Meta Quest Browser).
 2. Wejdź pod adres: https://piotrprzybylski505.github.io/rwr/
-3. Kliknij przycisk wejścia do trybu VR (Enter VR) na dole ekranu.
+3. Kliknij przycisk wejścia do trybu VR (Enter VR) w lewym górnym rogu ekranu.
 
 ## Funkcjonalności
 
